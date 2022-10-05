@@ -6,12 +6,10 @@ import { FEATURE_DATA, PRODUCT_DESCRIPTION, PRODUCT_VISION, PRODUCT_CUSTOMERS } 
 function LandingPage() {
 
     const FeatureBox = ({id, label, details, index}) => {
-        const isOdd = index%2===0
-        console.log('IsODD: ',isOdd)
         return (
             <>
                 <>
-                <Flex bg={'white'} width={'100%'} height={400} justify={'space-between'} id={id}
+                <Flex key={index} bg={'white'} width={'100%'} height={400} justify={'space-between'} id={id}
                     align='center'
                 >    
                     <Flex direction={'column'}>
