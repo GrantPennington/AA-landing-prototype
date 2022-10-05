@@ -4,11 +4,15 @@ import './index.css';
 import App from './App';
 import ChakraTheme from './ChakraTheme';
 
+import { BrowserRouter } from 'react-router-dom';
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <ChakraTheme>
-      <App />
-    </ChakraTheme>
+    <BrowserRouter>
+      <ChakraTheme>
+        <App />
+      </ChakraTheme>
+    </BrowserRouter>
   </React.StrictMode>
 );

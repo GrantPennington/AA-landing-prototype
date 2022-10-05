@@ -2,8 +2,10 @@ import { Box, Button, Flex, Heading, HStack, StackDivider } from '@chakra-ui/rea
 import React, { useRef } from 'react'
 import { NAVBAR_DATA } from '../data/constants'
 import { Divider } from '@chakra-ui/react';
+import { useNavigate } from 'react-router-dom';
 
 function NavBar() {
+    const navigate = useNavigate()
     
     const NavItem = ({ label }) => {
         return (
@@ -22,7 +24,7 @@ function NavBar() {
             bg={'white'}
             justify={'space-between'}
         >
-            <Flex height={185} width={400} p={0} m={0} justify='center' align='center' direction={'row'} _hover={{ cursor: 'pointer' }}>
+            <Flex height={185} width={400} p={0} m={0} justify='center' align='center' direction={'row'} _hover={{ cursor: 'pointer' }} onClick={() => navigate('/')} >
                 <Heading mb={2} ml={4} fontSize={'3rem'} fontWeight={'semibold'}>AccountAid</Heading>
                 <Box 
                     bgImage={process.env.PUBLIC_URL+"/images/AccountAid-Logo-Solo.png"}
