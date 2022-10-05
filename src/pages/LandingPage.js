@@ -1,14 +1,14 @@
-import React, { useEffect, useRef } from 'react'
-import { Box, Button, Center, Divider, Flex, Heading, Stack, Text } from "@chakra-ui/react"
+import React from 'react'
+import { Box, Divider, Flex, Heading, Stack, Text, Wrap, WrapItem } from "@chakra-ui/react"
 import NavBar from '../components/NavBar';
-import { FEATURE_DATA, PRODUCT_DESCRIPTION, PRODUCT_VISION, PRODUCT_CUSTOMERS } from '../data/constants';
+import { FEATURE_DATA, PRODUCT_DESCRIPTION, PRODUCT_VISION, PRODUCT_CUSTOMERS, DEVELOPER_CARD_DATA } from '../data/constants';
+import DeveloperCard from '../components/DeveloperCard';
 
 function LandingPage() {
-
+    
     const FeatureBox = ({id, label, details, index}) => {
         return (
             <>
-                <>
                 <Flex key={index} bg={'white'} width={'100%'} height={400} justify={'space-between'} id={id}
                     align='center'
                 >    
@@ -20,13 +20,12 @@ function LandingPage() {
                     </Flex>
                 </Flex>
                 <Divider color={'black'} size={'md'} />
-                </>
             </>
         )
     }
 
     return (
-      <Stack borderRadius="lg" pt={2}>
+      <Stack borderRadius="lg" pt={2} pb={20}>
         <Box position={'sticky'} top={0} width={'100%'} zIndex={6}>
             <NavBar />
         </Box>
@@ -72,7 +71,7 @@ function LandingPage() {
         )}
         <Flex bg={'primary.dark'} width={'100%'} height={400} justify={'flex-start'} direction={'row'}>
             <Flex bg={'primary.main'} width={500} align='center' justify='center' borderRadius={'md'}>
-                <Heading fontSize={'3rem'} color='#f5fefd'>Our Vision</Heading>
+                <Heading fontSize={'3rem'} color='primary.snow'>Our Vision</Heading>
             </Flex>
             <Flex bg={'primary.dark'} width={925} align='center' justify='center' ml={10}>
                 <Text fontSize={'1.75rem'} color='white' textAlign='left' ml={10}>{PRODUCT_VISION}</Text>
@@ -85,6 +84,35 @@ function LandingPage() {
             <Flex bg={'primary.secondary'} width={500} align='center' justify='center' borderRadius={'md'}>
                 <Heading fontSize={'3rem'} color='#f5fefd'>Potential Customers</Heading>
             </Flex>
+        </Flex>
+        <Flex bg={'primary.main'} width={'100%'} direction={'column'}>
+            <Flex justify={'center'} width={'100%'} mt={6}>
+                <Heading fontSize={'3rem'} mb={10} color={'primary.snow'}>Meet the Developers</Heading>
+            </Flex>
+            <Wrap justify='center' align='center' mt={6} spacing={20} height={375}>
+                {DEVELOPER_CARD_DATA.filter((item,index) => index <= 1).map((card, index) => 
+                    <WrapItem key={index}>
+                        <DeveloperCard
+                            name={card.name}
+                            title={card.title}
+                            description={card.description}
+                            img={card.img}
+                        />
+                    </WrapItem>
+                )}
+            </Wrap>
+            <Wrap justify='center' align='center' mt={6} spacing={20} height={375}>
+                {DEVELOPER_CARD_DATA.filter((item,index) => index >= 2).map((card, index) => 
+                    <WrapItem key={index}>
+                        <DeveloperCard
+                            name={card.name}
+                            title={card.title}
+                            description={card.description}
+                            img={card.img}
+                        />
+                    </WrapItem>
+                )}
+            </Wrap>
         </Flex>
       </Stack>
     )
